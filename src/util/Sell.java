@@ -25,6 +25,8 @@ public class Sell {
                 ", Дата продажи - '" + daySell + "-" + monthSell + "-" + yearSell + "\'";
     }
 
+
+
     public String getNameMedicine() {
         return nameMedicine;
     }
