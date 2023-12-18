@@ -46,7 +46,6 @@ public class MainMenu extends JFrame
     private JButton readFileXMLSellsButton;
 
 
-
     public MainMenu()
     {
         instance = this;
@@ -80,6 +79,76 @@ public class MainMenu extends JFrame
         editMedicine.setToolTipText(messageMedicine);
         nameMedicine.setToolTipText(messageMedicine);
         nameDisease.setToolTipText(messageDisease);
+
+    }
+
+    int numberThread = -1;
+
+    public class NewThread extends Thread {
+        public void run()
+        {
+            switch(numberThread) {
+                case 0:
+                    Medicines.writeInFileMedicines();
+                    break;
+                case 1:
+                    Sells.writeInFileSells();
+                    break;
+                case 2:
+                    int finishReadMedicines = Medicines.readOutFileMedicines(pathFileMedicines.getText());
+                    switch (finishReadMedicines){
+                        case 0:
+                            for(Medicine medicine : Medicines.readMedicines){
+                                if(!(Medicines.uniqueMedicines.contains(medicine.getNameMedicine()))){
+                                    Medicines.uniqueMedicines.add(medicine.getNameMedicine());
+                                }
+                                System.out.println(medicine.toString());
+                                Medicines.medicines.add(medicine);
+                            }
+                            Medicines.readMedicines.clear();
+                            JOptionPane.showMessageDialog(MainMenu.instance,
+                                    "<html><h2 align=\"center\">Файл прочитан успешно.</h2><p align=\"center\"> Данные загружены в список лекарств</p>");
+                            break;
+                        case 1:
+                            JOptionPane.showMessageDialog(MainMenu.instance,
+                                    "<html><h2 align=\"center\">Встречена ошибка данных файла</h2><p align=\"center\"> Проверьте правильность данных в файле</p>");
+                            break;
+                    }
+                    break;
+                case 3:
+                    int finishReadSells = Sells.readOutFileSells(pathFileSells.getText());
+                    switch (finishReadSells){
+                        case 0:
+                            for(Sell sell : Sells.readSells){
+                                System.out.println(sell.toString());
+                                Sells.sells.add(sell);
+                            }
+                            Sells.readSells.clear();
+                            JOptionPane.showMessageDialog(MainMenu.instance,
+                                    "<html><h2 align=\"center\">Файл прочитан успешно.</h2><p align=\"center\"> Данные загружены в список продаж</p>");
+                            break;
+                        case 1:
+                            JOptionPane.showMessageDialog(MainMenu.instance,
+                                    "<html><h2 align=\"center\">Встречена ошибка данных файла</h2><p align=\"center\"> Проверьте правильность данных в файле</p>");
+                            break;
+                    }
+                    break;
+                case 4:
+                    Medicines.writeXmlMedicines();
+                    break;
+                case 5:
+                    Sells.writeXmlSells();
+                    break;
+                case 6:
+                    Medicines.readXmlMedicines(pathXMLFileMedicines.getText());
+                    break;
+                case 7:
+                    Sells.readXmlSells(pathXMLFileSells.getText());
+                    break;
+                default:
+                    break;
+            }
+        }
 
     }
 
@@ -208,90 +277,75 @@ public class MainMenu extends JFrame
     ActionListener writeMedicinesInFile = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
-            Medicines.writeInFileMedicines();
+
+            numberThread = 0;
+            NewThread thread = new NewThread();
+            thread.start();
+
         }
     };
 
     ActionListener writeSellsInFile = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
-            Sells.writeInFileSells();
+            numberThread = 1;
+            NewThread thread = new NewThread();
+            thread.start();
         }
     };
 
     ActionListener readFileMedicines = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            int finishReadMedicines = Medicines.readOutFileMedicines(pathFileMedicines.getText());
-            switch (finishReadMedicines){
-                case 0:
-                    for(Medicine medicine : Medicines.readMedicines){
-                        if(!(Medicines.uniqueMedicines.contains(medicine.getNameMedicine()))){
-                            Medicines.uniqueMedicines.add(medicine.getNameMedicine());
-                        }
-                        System.out.println(medicine.toString());
-                        Medicines.medicines.add(medicine);
-                    }
-                    Medicines.readMedicines.clear();
-                    JOptionPane.showMessageDialog(MainMenu.instance,
-                            "<html><h2 align=\"center\">Файл прочитан успешно.</h2><p align=\"center\"> Данные загружены в список лекарств</p>");
-                    break;
-                case 1:
-                    JOptionPane.showMessageDialog(MainMenu.instance,
-                            "<html><h2 align=\"center\">Встречена ошибка данных файла</h2><p align=\"center\"> Проверьте правильность данных в файле</p>");
-                default:
-                    break;
-            }
+
+            numberThread = 2;
+            NewThread thread = new NewThread();
+            thread.start();
         }
     };
     ActionListener readFileSells = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            int finishReadSells = Sells.readOutFileSells(pathFileSells.getText());
-            switch (finishReadSells){
-                case 0:
-                    for(Sell sell : Sells.readSells){
-                        System.out.println(sell.toString());
-                        Sells.sells.add(sell);
-                    }
-                    Sells.readSells.clear();
-                    JOptionPane.showMessageDialog(MainMenu.instance,
-                            "<html><h2 align=\"center\">Файл прочитан успешно.</h2><p align=\"center\"> Данные загружены в список продаж</p>");
-                    break;
-                case 1:
-                    JOptionPane.showMessageDialog(MainMenu.instance,
-                            "<html><h2 align=\"center\">Встречена ошибка данных файла</h2><p align=\"center\"> Проверьте правильность данных в файле</p>");
-                default:
-                    break;
-            }
+
+            numberThread = 3;
+            NewThread thread = new NewThread();
+            thread.start();
         }
     };
 
     ActionListener writeXMLFileMedicines = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            Medicines.writeXmlMedicines();
+            numberThread = 4;
+            NewThread thread = new NewThread();
+            thread.start();
         }
     };
 
     ActionListener writeXMLFileSells = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            Sells.writeXmlSells();
+            numberThread = 5;
+            NewThread thread = new NewThread();
+            thread.start();
         }
     };
 
     ActionListener readXMLFileMedicines = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            Medicines.readXmlMedicines(pathXMLFileMedicines.getText());
+            numberThread = 6;
+            NewThread thread = new NewThread();
+            thread.start();
         }
     };
 
     ActionListener readXMLFileSells = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            Sells.readXmlSells(pathXMLFileSells.getText());
+            numberThread = 7;
+            NewThread thread = new NewThread();
+            thread.start();
         }
     };
 }
