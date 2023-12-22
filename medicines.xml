@@ -1,26 +1,26 @@
 <medicines>
   <medicine>
-    <nameMedicine>555</nameMedicine>
-    <nameDisease>55</nameDisease>
-    <price>5</price>
-    <quantity>555</quantity>
-  </medicine>
-  <medicine>
     <nameMedicine>222</nameMedicine>
     <nameDisease>222</nameDisease>
     <price>222</price>
-    <quantity>200</quantity>
+    <quantity>189</quantity>
   </medicine>
   <medicine>
-    <nameMedicine>333</nameMedicine>
-    <nameDisease>333</nameDisease>
-    <price>333</price>
-    <quantity>300</quantity>
+    <nameMedicine>555</nameMedicine>
+    <nameDisease>55</nameDisease>
+    <price>5</price>
+    <quantity>532</quantity>
   </medicine>
   <medicine>
     <nameMedicine>444</nameMedicine>
     <nameDisease>444</nameDisease>
     <price>444</price>
     <quantity>400</quantity>
+  </medicine>
+  <medicine>
+    <nameMedicine>333</nameMedicine>
+    <nameDisease>333</nameDisease>
+    <price>333</price>
+    <quantity>278</quantity>
   </medicine>
 </medicines>

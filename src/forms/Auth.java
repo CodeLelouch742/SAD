@@ -1,11 +1,16 @@
 package forms;
 
+import application.Application;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Auth extends JFrame {
 
@@ -31,6 +36,10 @@ public class Auth extends JFrame {
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
             if (login.getText().equals("111") && pass.getText().equals("111")){
+                try {
+                    checkTables();
+                } catch (SQLException e) {
+                }
                 MainMenu mainmenu = new MainMenu();
                 mainmenu.pack();
                 mainmenu.setVisible(true);
@@ -50,4 +59,17 @@ public class Auth extends JFrame {
             System.exit(0);
         }
     };
+
+    public static void checkTables() throws SQLException {
+        try(Connection connection = Application.getConnection()){
+            Statement statement = connection.createStatement();
+            String addDataBase = "CREATE DATABASE IF NOT EXISTS pharmacy";
+            statement.execute(addDataBase);
+            statement.execute("use pharmacy");
+            String addTableMedicine = "CREATE TABLE IF NOT EXISTS Medicine(NameMedicine text NOT NULL, NameDisease text NOT NULL, Price text NOT NULL, Quantity text NOT NULL)";
+            statement.execute(addTableMedicine);
+            String addTableSell = "CREATE TABLE IF NOT EXISTS Sell(NameMedicine text NOT NULL, QuantitySell text NOT NULL, DaySell text NOT NULL, MonthSell text NOT NULL, YearSell text NOT NULL)";
+            statement.execute(addTableSell);
+        }
+    }
 }

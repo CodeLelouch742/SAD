@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import forms.MainMenu;
+import manager.SellEntityManager;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -108,6 +109,8 @@ public class Sells {
                     StandardOpenOption.WRITE,
                     StandardOpenOption.TRUNCATE_EXISTING
             );
+            JOptionPane.showMessageDialog(MainMenu.instance,
+                    "<html><h2 align=\"center\">Данные успешно записаны.</h2>");
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         } catch (IOException e1)
@@ -148,20 +151,22 @@ public class Sells {
                 }else{
                     return 1;
                 }
-                if(Medicines.checkInt(lineData[2])){
-                    sell.setDaySell(lineData[2]);
-                }else{
-                    return 1;
-                }
-                if(Medicines.checkInt(lineData[3])){
-                    sell.setMonthSell(lineData[3]);
-                }else{
-                    return 1;
-                }
-                if(Medicines.checkInt(lineData[3])){
-                    sell.setYearSell(lineData[3]);
-                }else{
-                    return 1;
+                if(isDateValid(lineData[2], lineData[3], lineData[4])){
+                    if(Medicines.checkInt(lineData[2])){
+                        sell.setDaySell(lineData[2]);
+                    }else{
+                        return 1;
+                    }
+                    if(Medicines.checkInt(lineData[3])){
+                        sell.setMonthSell(lineData[3]);
+                    }else{
+                        return 1;
+                    }
+                    if(Medicines.checkInt(lineData[4])){
+                        sell.setYearSell(lineData[4]);
+                    }else{
+                        return 1;
+                    }
                 }
                 Sells.readSells.add(sell);
             }
@@ -170,6 +175,10 @@ public class Sells {
             JOptionPane.showMessageDialog(MainMenu.instance,
                     "<html><h2 align=\"center\">Не верный путь до файла.</h2><p align=\"center\"> Введите путь до файла снова.</p>");
             throw new RuntimeException(e);
+        }catch (ArrayIndexOutOfBoundsException array){
+            JOptionPane.showMessageDialog(MainMenu.instance,
+                    "<html><h2 align=\"center\">Не верный формат файла.</h2><p align=\"center\"> Введите имя файла снова.</p>");
+            throw new RuntimeException(array);
         }
     }
 
@@ -184,13 +193,27 @@ public class Sells {
             for(int i = 0; i < nodeList.getLength(); i++){
                 Node node = nodeList.item(i);
                 Element element = (Element) node;
-                Sell sell = new Sell(element.getElementsByTagName("nameMedicine").item(0).getTextContent(),
-                        element.getElementsByTagName("quantitySell").item(0).getTextContent(),
-                        element.getElementsByTagName("daySell").item(0).getTextContent(),
+                if(isDateValid(element.getElementsByTagName("daySell").item(0).getTextContent(),
                         element.getElementsByTagName("monthSell").item(0).getTextContent(),
-                        element.getElementsByTagName("yearSell").item(0).getTextContent());
-                Sells.sells.add(sell);
+                        element.getElementsByTagName("yearSell").item(0).getTextContent())
+                        && Medicines.checkInt(element.getElementsByTagName("quantitySell").item(0).getTextContent())){
+                    Sell sell = new Sell(element.getElementsByTagName("nameMedicine").item(0).getTextContent(),
+                            element.getElementsByTagName("quantitySell").item(0).getTextContent(),
+                            element.getElementsByTagName("daySell").item(0).getTextContent(),
+                            element.getElementsByTagName("monthSell").item(0).getTextContent(),
+                            element.getElementsByTagName("yearSell").item(0).getTextContent());
+                    Sells.sells.add(sell);
+                    SellEntityManager.insert(sell);
+                }
             }
+            JOptionPane.showMessageDialog(MainMenu.instance,
+                    "<html><h2 align=\"center\">Данные успешно прочитаны.</h2>");
+        } catch (IOException e){
+            JOptionPane.showMessageDialog(MainMenu.instance,
+                    "<html><h2 align=\"center\">Не верное имя файла.</h2><p align=\"center\"> Введите имя файла снова.</p>");
+        }catch (ArrayIndexOutOfBoundsException array){
+            JOptionPane.showMessageDialog(MainMenu.instance,
+                    "<html><h2 align=\"center\">Не верный формат файла.</h2><p align=\"center\"> Введите имя файла снова.</p>");
         } catch (Exception ex) {
             ex.printStackTrace();
         }

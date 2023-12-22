@@ -1,30 +1,23 @@
 <sells>
   <sell>
-    <nameMedicine>111</nameMedicine>
-    <quantitySell>11</quantitySell>
-    <daySell>01</daySell>
-    <monthSell>12</monthSell>
-    <yearSell>12</yearSell>
-  </sell>
-  <sell>
     <nameMedicine>222</nameMedicine>
-    <quantitySell>22</quantitySell>
-    <daySell>02</daySell>
-    <monthSell>11</monthSell>
-    <yearSell>11</yearSell>
+    <quantitySell>33</quantitySell>
+    <daySell>11</daySell>
+    <monthSell>12</monthSell>
+    <yearSell>2023</yearSell>
   </sell>
   <sell>
     <nameMedicine>333</nameMedicine>
-    <quantitySell>33</quantitySell>
-    <daySell>03</daySell>
-    <monthSell>10</monthSell>
-    <yearSell>10</yearSell>
+    <quantitySell>22</quantitySell>
+    <daySell>12</daySell>
+    <monthSell>11</monthSell>
+    <yearSell>2023</yearSell>
   </sell>
   <sell>
-    <nameMedicine>444</nameMedicine>
-    <quantitySell>44</quantitySell>
-    <daySell>04</daySell>
-    <monthSell>09</monthSell>
-    <yearSell>09</yearSell>
+    <nameMedicine>555</nameMedicine>
+    <quantitySell>23</quantitySell>
+    <daySell>23</daySell>
+    <monthSell>04</monthSell>
+    <yearSell>2022</yearSell>
   </sell>
 </sells>

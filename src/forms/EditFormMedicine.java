@@ -22,7 +22,7 @@ public class EditFormMedicine extends JFrame {
 
     public static String nameMedicine;
 
-    private Medicine medicine;
+    private Medicine medicine = new Medicine();
 
     public EditFormMedicine(String name){
         instance = this;
@@ -32,7 +32,7 @@ public class EditFormMedicine extends JFrame {
         setContentPane(editFormMedicine);
         setPreferredSize(new Dimension(700,500));
         setTitle("Редактирование лекарства");
-        medicine = Medicines.getUserByNickname(name);
+        //medicine = Medicines.getMedicineByName(name);
 
         instance.addWindowListener(exitWindowListener);
 
@@ -73,36 +73,51 @@ public class EditFormMedicine extends JFrame {
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
 
-            if(!(editNameDisease.getText().isEmpty())){
-                medicine.setNameMedicine(editNameMedicine.getText());
-            }
+            Medicine oldMedicine = Medicines.getMedicineByName(nameMedicine);
 
+            if(!(editNameMedicine.getText().isEmpty())){
+                medicine.setNameMedicine(editNameMedicine.getText());
+            }else{
+                medicine.setNameMedicine(oldMedicine.getNameMedicine());
+            }
             if(!(editNameDisease.getText().isEmpty())){
                 medicine.setNameDisease(editNameDisease.getText());
+            }else{
+                medicine.setNameDisease(oldMedicine.getNameDisease());
             }
-
             if(!(editPrice.getText().isEmpty())){
                 medicine.setPrice(editPrice.getText());
+            }else {
+                medicine.setPrice(oldMedicine.getPrice());
             }
-
             if(!(editQuantity.getText().isEmpty())){
                 medicine.setQuantity(editQuantity.getText());
+            }else {
+                medicine.setQuantity(oldMedicine.getQuantity());
             }
-            if(!(Integer.parseInt(editQuantity.getText()) < 0 && Integer.parseInt(editPrice.getText()) < 0)){
-                Medicines.setMedicineByName(medicine);
-                int index = 0;
-                for(String string : Medicines.uniqueMedicines){
-                    if (nameMedicine.equalsIgnoreCase(string)){
-                        Medicines.uniqueMedicines.set(index, editNameMedicine.getText());
+            if(!(Medicines.checkNameMedicineList(editNameMedicine.getText()))){
+                if(!(Integer.parseInt(editQuantity.getText()) < 0 && Integer.parseInt(editPrice.getText()) < 0)){
+                    Medicines.setMedicineByName(medicine, nameMedicine);
+                    System.out.println(medicine.toString());
+                    int index = 0;
+                    for(String string : Medicines.uniqueMedicines){
+                        if (nameMedicine.equalsIgnoreCase(string)){
+                            Medicines.uniqueMedicines.set(index, medicine.getNameMedicine());
+                        }
+                        index++;
                     }
-                    index++;
+                    MainMenu.instance.setVisible(true);
+                    dispose();
+                }else{
+                    JOptionPane.showMessageDialog(instance,
+                            "<html><h2 align=\"center\">Ввод данных меньше нуля.</h2><p align=\"center\"> Введите коректные данные.</p>");
                 }
-                MainMenu.instance.setVisible(true);
-                dispose();
-            }else{
+            }else {
                 JOptionPane.showMessageDialog(instance,
-                        "<html><h2 align=\"center\">Ввод данных меньше нуля.</h2><p align=\"center\"> Введите коректные данные.</p>");
+                        "<html><h2 align=\"center\">Лекарство с такими названием уже существует." +
+                                "</h2><p align=\"center\">Измените уже существующее лекарство или введите другое название.</p>");
             }
+
         }
     };
 

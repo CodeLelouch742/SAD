@@ -1,11 +1,13 @@
 package forms;
 
+import manager.MedicineEntityManager;
 import util.Medicine;
 import util.Medicines;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.SQLException;
 
 
 public class FormAddMedicine extends JFrame {
@@ -69,13 +71,21 @@ public class FormAddMedicine extends JFrame {
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
             if(!(Integer.parseInt(quantity.getText()) < 0 && Integer.parseInt(price.getText()) < 0)){
-                if(!(Medicines.uniqueMedicines.contains(nameMedicine.getText()))){
+                if(!(Medicines.checkNameMedicineList(nameMedicine.getText()))){
                     Medicines.uniqueMedicines.add(nameMedicine.getText());
+                    Medicine medicine = new Medicine(nameMedicine.getText(), illness.getText(), price.getText(), quantity.getText());
+                    Medicines.medicines.add(medicine);
+                    try {
+                        MedicineEntityManager.insert(medicine);
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                    MainMenu.instance.setVisible(true);
+                    dispose();
+                }else {
+                    JOptionPane.showMessageDialog(instance,
+                            "<html><h2 align=\"center\">Лекарство с таким навазинем уже существует.</h2><p align=\"center\"> Введите корректное название или исправьте данные об уже существуещем.</p>");
                 }
-                Medicine medicine = new Medicine(nameMedicine.getText(), illness.getText(), price.getText(), quantity.getText());
-                Medicines.medicines.add(medicine);
-                MainMenu.instance.setVisible(true);
-                dispose();
             }else {
                 JOptionPane.showMessageDialog(instance,
                         "<html><h2 align=\"center\">Ввод данных меньше нуля.</h2><p align=\"center\"> Введите коректные данные.</p>");

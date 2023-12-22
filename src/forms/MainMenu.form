@@ -1,218 +1,236 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="forms.MainMenu">
-  <grid id="27dc6" binding="mainMenu" layout-manager="GridLayoutManager" row-count="18" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="mainMenu" layout-manager="GridLayoutManager" row-count="15" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="562" height="569"/>
+      <xy x="20" y="20" width="569" height="724"/>
     </constraints>
     <properties/>
     <border type="none"/>
     <children>
-      <component id="42d6" class="javax.swing.JButton" binding="show">
+      <component id="76383" class="javax.swing.JButton" binding="newMedicine">
         <constraints>
-          <grid row="3" column="0" row-span="6" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Просмотр всех лекарств"/>
-        </properties>
-      </component>
-      <component id="98aef" class="javax.swing.JButton" binding="dropMedicine">
-        <constraints>
-          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Удаление лекарства из базы данных"/>
-        </properties>
-      </component>
-      <component id="9e05a" class="javax.swing.JButton" binding="sellByMonthButton">
-        <constraints>
-          <grid row="10" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Вывод общей суммы продаж за месяц"/>
-        </properties>
-      </component>
-      <component id="f2059" class="javax.swing.JTextField" binding="nameDisease">
-        <constraints>
-          <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-        </constraints>
-        <properties>
-          <text value=""/>
-        </properties>
-      </component>
-      <component id="3d66" class="javax.swing.JButton" binding="dropAllMedicines">
-        <constraints>
-          <grid row="6" column="1" row-span="2" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Удаление всех лекарств"/>
-        </properties>
-      </component>
-      <component id="9f626" class="javax.swing.JButton" binding="edit">
-        <constraints>
-          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Редактировать информацию о лекарстве"/>
-        </properties>
-      </component>
-      <component id="89e17" class="javax.swing.JButton" binding="sellByTimeButton">
-        <constraints>
-          <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Вывод количества продаж за определённое время"/>
-        </properties>
-      </component>
-      <component id="5713c" class="javax.swing.JButton" binding="showAllSellsButton">
-        <constraints>
-          <grid row="11" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Просмотр всех продаж"/>
-        </properties>
-      </component>
-      <component id="3e058" class="javax.swing.JButton" binding="newMedicine">
-        <constraints>
-          <grid row="0" column="0" row-span="2" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Добавить новое лекарство"/>
         </properties>
       </component>
-      <component id="e8710" class="javax.swing.JButton" binding="addSellButton">
+      <component id="5ad96" class="javax.swing.JButton" binding="addSellButton">
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Добавить новую продажу"/>
         </properties>
       </component>
-      <component id="7a52e" class="javax.swing.JTextField" binding="nameMedicine">
+      <component id="dca00" class="javax.swing.JButton" binding="show">
         <constraints>
-          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
+          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
-        <properties/>
+        <properties>
+          <text value="Просмотр всех лекарств"/>
+        </properties>
       </component>
-      <component id="e94d7" class="javax.swing.JTextField" binding="editMedicine">
+      <component id="4d918" class="javax.swing.JButton" binding="showAllSellsButton">
         <constraints>
-          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
+          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
-        <properties/>
+        <properties>
+          <text value="Просмотр всех продаж"/>
+        </properties>
       </component>
-      <component id="899e1" class="javax.swing.JButton" binding="writeInFileMedicinesButton">
+      <component id="18b9e" class="javax.swing.JButton" binding="writeInFileMedicinesButton">
         <constraints>
-          <grid row="12" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Запись данных по лекарствам в файл"/>
         </properties>
       </component>
-      <component id="8931b" class="javax.swing.JButton" binding="writeInFileSellsButton">
+      <component id="c06ae" class="javax.swing.JButton" binding="writeInFileSellsButton">
         <constraints>
-          <grid row="15" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Запись данных по продажам в файл"/>
         </properties>
       </component>
-      <component id="26b0" class="javax.swing.JTextField" binding="pathFileMedicines">
+      <component id="a6a62" class="javax.swing.JTextField" binding="nameMedicine">
         <constraints>
-          <grid row="13" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties>
-          <text value=""/>
-        </properties>
+        <properties/>
       </component>
-      <component id="c32c6" class="javax.swing.JButton" binding="readFileMedicinesButton">
+      <component id="f1dc5" class="javax.swing.JButton" binding="dropMedicine">
         <constraints>
-          <grid row="14" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="13" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Загрузить из файла список лекарств"/>
+          <text value="Удаление лекарства"/>
         </properties>
       </component>
-      <component id="ff010" class="javax.swing.JButton" binding="showAllMedicineByDiseaseButton">
+      <component id="5c92" class="javax.swing.JButton" binding="sellByMonthButton">
         <constraints>
-          <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Вывод всех лекарств для болезни"/>
+          <text value="Вывод общей суммы продаж"/>
         </properties>
       </component>
-      <component id="4d8d2" class="javax.swing.JTextField" binding="pathFileSells">
+      <component id="aa95" class="javax.swing.JButton" binding="sellByTimeButton">
         <constraints>
-          <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Вывод количества продаж за определённое время"/>
+        </properties>
+      </component>
+      <component id="18b49" class="javax.swing.JTextField" binding="editMedicine">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties>
-          <text value=""/>
-        </properties>
+        <properties/>
       </component>
-      <component id="f5923" class="javax.swing.JButton" binding="readFileSellsButton">
+      <component id="83a0b" class="javax.swing.JButton" binding="writeInXMLSellsButton">
         <constraints>
-          <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Загрузить из файла список продаж"/>
-        </properties>
-      </component>
-      <component id="9f107" class="javax.swing.JButton" binding="writeInXMLMedicinesButton">
-        <constraints>
-          <grid row="14" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Запись в XML файл лекарств"/>
-        </properties>
-      </component>
-      <component id="be997" class="javax.swing.JButton" binding="writeInXMLSellsButton">
-        <constraints>
-          <grid row="13" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Запись в XML файл продажи"/>
         </properties>
       </component>
-      <component id="62e4e" class="javax.swing.JTextField" binding="pathXMLFileMedicines">
+      <component id="85b1d" class="javax.swing.JButton" binding="edit">
         <constraints>
-          <grid row="16" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Редактирование лекарства"/>
+        </properties>
+      </component>
+      <component id="45613" class="javax.swing.JButton" binding="writeInXMLMedicinesButton">
+        <constraints>
+          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Запись в XML файл лекарства"/>
+        </properties>
+      </component>
+      <component id="c3c71" class="javax.swing.JTextField" binding="nameDisease">
+        <constraints>
+          <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
         <properties/>
       </component>
-      <component id="112db" class="javax.swing.JButton" binding="readFileXMLMedicinesButton">
+      <component id="bd984" class="javax.swing.JButton" binding="showAllMedicineByDiseaseButton">
         <constraints>
-          <grid row="17" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Загрузка лекарств из XML"/>
+          <text value="Вывод всех лекарств по болезни"/>
         </properties>
       </component>
-      <component id="fc2f6" class="javax.swing.JButton" binding="readFileXMLSellsButton">
+      <component id="d474a" class="javax.swing.JButton" binding="dropAllMedicines">
         <constraints>
-          <grid row="17" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="14" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Загрузка продаж из XML"/>
+          <text value="Удаление всех лекарств"/>
         </properties>
       </component>
-      <component id="4daff" class="javax.swing.JTextField" binding="pathXMLFileSells">
+      <component id="4f2fc" class="javax.swing.JLabel">
         <constraints>
-          <grid row="16" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Взаимодействие с данными"/>
+        </properties>
+      </component>
+      <component id="d045f" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Работа с файлами"/>
+        </properties>
+      </component>
+      <component id="208a9" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="База данных аптеки"/>
+        </properties>
+      </component>
+      <component id="b8c2d" class="javax.swing.JTextField" binding="pathFileMedicines">
+        <constraints>
+          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
         <properties/>
+      </component>
+      <component id="3a459" class="javax.swing.JButton" binding="readFileMedicinesButton">
+        <constraints>
+          <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Чтение из файла лекарств"/>
+        </properties>
+      </component>
+      <component id="c02e6" class="javax.swing.JTextField" binding="pathFileSells">
+        <constraints>
+          <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="e5cbd" class="javax.swing.JButton" binding="readFileSellsButton">
+        <constraints>
+          <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Чтение из файла продаж"/>
+        </properties>
+      </component>
+      <component id="68cba" class="javax.swing.JTextField" binding="pathXMLFileMedicines">
+        <constraints>
+          <grid row="10" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="eb9c1" class="javax.swing.JButton" binding="readFileXMLMedicinesButton">
+        <constraints>
+          <grid row="11" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Чтение из XML лекарств"/>
+        </properties>
+      </component>
+      <component id="60021" class="javax.swing.JTextField" binding="pathXMLFileSells">
+        <constraints>
+          <grid row="12" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="e825b" class="javax.swing.JButton" binding="readFileXMLSellsButton">
+        <constraints>
+          <grid row="13" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Чтение из XML продаж"/>
+        </properties>
       </component>
     </children>
   </grid>

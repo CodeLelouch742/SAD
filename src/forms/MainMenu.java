@@ -1,5 +1,7 @@
 package forms;
 
+import manager.MedicineEntityManager;
+import manager.SellEntityManager;
 import util.Medicine;
 import util.Medicines;
 import util.Sell;
@@ -11,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.SQLException;
 
 public class MainMenu extends JFrame
 {
@@ -52,6 +55,7 @@ public class MainMenu extends JFrame
         setContentPane(mainMenu);
         setPreferredSize(new Dimension(1200,700));
         setTitle("Главное меню");
+
         newMedicine.addActionListener(addMedicine);
         show.addActionListener(showAllMedicines);
         dropMedicine.addActionListener(removeMedicine);
@@ -71,14 +75,21 @@ public class MainMenu extends JFrame
         readFileXMLMedicinesButton.addActionListener(readXMLFileMedicines);
         readFileXMLSellsButton.addActionListener(readXMLFileSells);
 
+        startAddDataFromBase();
+
 
         instance.addWindowListener(exitWindowListener);
 
         String messageMedicine = "<html> Введите название лекарства <br></html>";
         String messageDisease = "<html> Введите название болезни <br></html>";
+        String messagePath = "<html> Введите полное имя файла <br></html>";
         editMedicine.setToolTipText(messageMedicine);
         nameMedicine.setToolTipText(messageMedicine);
         nameDisease.setToolTipText(messageDisease);
+        pathFileMedicines.setToolTipText(messagePath);
+        pathFileSells.setToolTipText(messagePath);
+        pathXMLFileMedicines.setToolTipText(messagePath);
+        pathXMLFileSells.setToolTipText(messagePath);
 
     }
 
@@ -104,6 +115,11 @@ public class MainMenu extends JFrame
                                 }
                                 System.out.println(medicine.toString());
                                 Medicines.medicines.add(medicine);
+                                try {
+                                    MedicineEntityManager.insert(medicine);
+                                } catch (SQLException e) {
+
+                                }
                             }
                             Medicines.readMedicines.clear();
                             JOptionPane.showMessageDialog(MainMenu.instance,
@@ -122,6 +138,11 @@ public class MainMenu extends JFrame
                             for(Sell sell : Sells.readSells){
                                 System.out.println(sell.toString());
                                 Sells.sells.add(sell);
+                                try {
+                                    SellEntityManager.insert(sell);
+                                } catch (SQLException e) {
+
+                                }
                             }
                             Sells.readSells.clear();
                             JOptionPane.showMessageDialog(MainMenu.instance,
@@ -152,13 +173,30 @@ public class MainMenu extends JFrame
 
     }
 
+    public static void startAddDataFromBase(){
+        try {
+            for(Medicine medicine : MedicineEntityManager.selectAll()){
+                if(!(Medicines.checkNameMedicineList(medicine.getNameMedicine()))){
+                    Medicines.uniqueMedicines.add(medicine.getNameMedicine());
+                    Medicines.medicines.add(medicine);
+                }else{
+                    JOptionPane.showMessageDialog(instance,
+                            "<html><h2 align=\"center\">Лекарство " + medicine.getNameMedicine() + " повторяется в базе.</h2><p align=\"center\"> Проверьте чтобы оно было уникально в базе данных.</p>");
+                }
+            }
+            Sells.sells = SellEntityManager.selectAll();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     ActionListener removeMedicine = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
             if (!(nameMedicine.getText().isEmpty()) && Medicines.checkNameMedicineList(nameMedicine.getText())){
                 Medicines.removeByNameMedicine(nameMedicine.getText());
                 JOptionPane.showMessageDialog(instance,
-                        "<html><h2 align=\"center\">Лекарство удалено из базы");
+                        "<html><h2 align=\"center\">Лекарство удалено из базы</h2>");
 
             }else{
                 JOptionPane.showMessageDialog(instance,
@@ -267,6 +305,9 @@ public class MainMenu extends JFrame
         @Override
         public void windowClosing(WindowEvent e) {
             super.windowClosing(e);
+            Medicines.medicines.clear();
+            Medicines.uniqueMedicines.clear();
+            Sells.sells.clear();
             Auth auth = new Auth();
             auth.pack();
             auth.setVisible(true);
@@ -348,4 +389,5 @@ public class MainMenu extends JFrame
             thread.start();
         }
     };
+
 }
